@@ -1,5 +1,6 @@
 import 'package:kabadonline/app_utils/app_utils.dart';
 import 'package:kabadonline/view/faqs.dart';
+import 'package:kabadonline/view/rate_card.dart';
 import 'package:kabadonline/view/request_pickup_now.dart';
 import 'package:kabadonline/widget/carousel.dart';
 import 'package:kabadonline/widget/serviceColumn.dart';
@@ -141,8 +142,16 @@ class HomePage extends StatelessWidget {
               title: Text('How It Works?'),
             ),
             const Divider(),
-            const ListTile(
-              title: Text('Rate Card'),
+            ListTile(
+              title: const Text('Rate Card'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const RateCard(),
+                  ),
+                );
+              },
             ),
             const Divider(),
             ListTile(

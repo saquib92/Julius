@@ -3,6 +3,9 @@ import 'package:http/http.dart' as http;
 import 'package:kabadonline/models/generate_token.dart';
 import 'package:kabadonline/models/get_faqs_response.dart';
 import 'package:kabadonline/models/get_locality_city_state_request.dart';
+import 'package:kabadonline/models/get_scrap_price_list.dart';
+import 'package:kabadonline/models/item_category_response.dart';
+import 'package:kabadonline/view/filter.dart';
 
 import '../core/constants.dart';
 import '../models/add_wizard_form.dart';
@@ -162,5 +165,117 @@ class ApiProvider {
     } else {
       return "Request Failed";
     }
+  }
+
+  // static Future<dynamic> getRateCard(String token) async {
+  //   var headers = {
+  //     'Content-Type': 'application/json',
+  //     'Authorization': token,
+  //   };
+  //   var payload =
+  //       json.encode({'post_return_type': 'Mob', 'post_return-language': '1'});
+  //   var response = await http.post(
+  //     Uri.parse(
+  //       '${Constants.baseUrl}get-scrap-price-list',
+  //     ),
+  //     body: payload,
+  //     headers: headers,
+  //   );
+
+  //   if (response.statusCode == 200) {
+  //     var res = jsonDecode(response.body);
+  //     if (res["code"] == 200) {
+  //       return res["data"];
+  //     } else {
+  //       return null;
+  //     }
+  //   }
+  // }
+
+  static Future<GetScrapPriceListResponse> getRateCard(String token) async {
+    var headers = {
+      'Content-Type': 'application/json',
+      'Authorization': token,
+    };
+    var payload =
+        json.encode({'post_return_type': 'Mob', 'post_return-language': '1'});
+    var response = await http.post(
+      Uri.parse(
+        '${Constants.baseUrl}get-scrap-price-list',
+      ),
+      body: payload,
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      var res = jsonDecode(response.body);
+      List<Rate> rateCardList = [];
+      if (res["code"] == 200) {
+        for (var i in res["data"]) {
+          rateCardList.add(Rate(
+            itemid: i["item_id"],
+            itemname: i["item_name"],
+            itemprice: i["item_price"],
+            itemcatid: i["item_cat_id"],
+            itemdescription: i["item_description"],
+            itemimagefile: i["item_image_file"],
+            itemstatus: i["item_status"],
+            itemadminid: i["item_admin_id"],
+            itemadmintype: i["item_admin_type"],
+            itemcreatedatetime: i["item_create_datetime"],
+            itemupdatedatetime: i["item_update_datetime"],
+            catid: i["cat_id"],
+            catname: i["cat_name"],
+            catvalue: i["cat_value"],
+            catstatus: i["cat_status"],
+          ));
+        }
+        return GetScrapPriceListResponse(
+          code: res["code"],
+          rateData: rateCardList,
+        );
+      }
+    }
+    return GetScrapPriceListResponse(
+      rateData: [],
+    );
+  }
+
+  static Future<GetItemCategory> getFilterItemCat(String token) async {
+    var headers = {
+      'Content-Type': 'application/json',
+      'Authorization': token,
+    };
+    var payload =
+        json.encode({'post_return_type': 'Mob', 'post_return-language': '1'});
+    var response = await http.post(
+      Uri.parse(
+        '${Constants.baseUrl}get-item-categories',
+      ),
+      body: payload,
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      var res = jsonDecode(response.body);
+      List<Item> FilterItemList = [];
+      if (res["code"] == 200) {
+        for (var i in res["data"]) {
+          FilterItemList.add(Item(
+            catid: i["cat_id"],
+            catname: i["cat_name"],
+            catvalue: i["cat_value"],
+            catstatus: i["cat_status"],
+          ));
+        }
+        return GetItemCategory(
+          code: res["code"],
+          itemCategoryData: FilterItemList,
+        );
+      }
+    }
+    return GetItemCategory(
+      itemCategoryData: [],
+    );
   }
 }
