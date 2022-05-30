@@ -1,5 +1,6 @@
 import 'package:kabadonline/app_utils/app_utils.dart';
 import 'package:kabadonline/view/faqs.dart';
+import 'package:kabadonline/view/how_it_works.dart';
 import 'package:kabadonline/view/rate_card.dart';
 import 'package:kabadonline/view/request_pickup_now.dart';
 import 'package:kabadonline/widget/carousel.dart';
@@ -138,8 +139,16 @@ class HomePage extends StatelessWidget {
               },
             ),
             const Divider(),
-            const ListTile(
+            ListTile(
               title: Text('How It Works?'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HowItWorks(),
+                  ),
+                );
+              },
             ),
             const Divider(),
             ListTile(

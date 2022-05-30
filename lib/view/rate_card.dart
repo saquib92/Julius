@@ -132,34 +132,55 @@ class _RateCardState extends State<RateCard> {
           ),
           itemCount: ratecardList.length,
           itemBuilder: (BuildContext ctx, i) {
-            return Container(
-              alignment: Alignment.center,
-              child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 10.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Image.network(
-                        "https://www.kabadonline.com/uploads/${ratecardList[i].itemimagefile}",
-                        height: 100,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
-                      ),
-                      Text(ratecardList[i].catname),
-                      Text(ratecardList[i].itemprice),
-                      Text(
-                        ratecardList[i].itemdescription,
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
+            return InkWell(
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (ctx) => AlertDialog(
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(ratecardList[i].catname),
+                              Text(ratecardList[i].itemprice),
+                              Image.network(
+                                "https://www.kabadonline.com/uploads/${ratecardList[i].itemimagefile}",
+                                height: 100,
+                                fit: BoxFit.cover,
+                              ),
+                              Text(ratecardList[i].itemdescription),
+                            ],
+                          ),
+                        ));
+              },
+              child: Container(
+                alignment: Alignment.center,
+                child: Card(
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 10.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Image.network(
+                          "https://www.kabadonline.com/uploads/${ratecardList[i].itemimagefile}",
+                          height: 100,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
+                        Text(ratecardList[i].catname),
+                        Text(ratecardList[i].itemprice),
+                        Text(
+                          ratecardList[i].itemdescription,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
+                // decoration: BoxDecoration(
+                //   color: Colors.amber,
+                //   borderRadius: BorderRadius.circular(15),
+                // ),
               ),
-              // decoration: BoxDecoration(
-              //   color: Colors.amber,
-              //   borderRadius: BorderRadius.circular(15),
-              // ),
             );
           }),
     );
