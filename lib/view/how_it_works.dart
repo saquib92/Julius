@@ -16,7 +16,7 @@ class _HowItWorksState extends State<HowItWorks> {
     ytController = YoutubePlayerController(
       initialVideoId: "u6O2XHgxWOA",
       flags: const YoutubePlayerFlags(
-        autoPlay: false,
+        autoPlay: true,
         mute: true,
         startAt: 20,
       ),
@@ -62,141 +62,150 @@ class _HowItWorksState extends State<HowItWorks> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Card(
-          elevation: 5,
-          child: Container(
-            margin: const EdgeInsets.all(5),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  width: double.infinity,
-                  child: const Text(
-                    "How does it work?",
-                    style: TextStyle(fontSize: 25),
-                    textAlign: TextAlign.center,
+        child: SingleChildScrollView (
+          child: Card(
+            elevation: 5,
+            child: Container(
+              margin: const EdgeInsets.all(5),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    width: double.infinity,
+                    child: const Text(
+                      "How does it work?",
+                      style: TextStyle(fontSize: 25),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                ),
-                const Divider(
-                  thickness: 1,
-                ),
-                const Text(
-                  "KabadOnline provides the service which collect and provide good return from your old scrap.You only need to raise one pickup request and pickup vehicle will come at your doorstep at your own comfortable time slot! ",
-                  style: TextStyle(fontSize: 16),
-                  textAlign: TextAlign.left,
-                ),
-                YoutubePlayer(
-                  controller: ytController,
-                  showVideoProgressIndicator: true,
-                ),
-                Card(
-                  // color: Colors.grey,
-                  elevation: 5,
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  child: Container(
-                    margin: const EdgeInsets.all(5),
-                    child: ListTile(
-                      visualDensity:
-                          const VisualDensity(horizontal: 0, vertical: -4),
-                      leading: const CircleAvatar(
-                        backgroundImage: AssetImage('assets/images/img3.png'),
-                      ),
-                      title: const Text(
-                        'Scrap Pickup',
-                        style: TextStyle(
-                          color: Colors.green,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
+                  const Divider(
+                    thickness: 1,
+                  ),
+                  const Text(
+                    "KabadOnline provides the service which collect and provide good return from your old scrap.You only need to raise one pickup request and pickup vehicle will come at your doorstep at your own comfortable time slot! ",
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.left,
+                  ),
+                  const Divider(
+                    thickness: 1,
+                  ),
+                  YoutubePlayer(
+                    controller: ytController,
+                    showVideoProgressIndicator: true,
+                  ),
+                  const Divider(
+                    thickness: 1,
+                  ),
+                  Card(
+                    // color: Colors.grey,
+                    elevation: 5,
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    child: Container(
+                      margin: const EdgeInsets.all(5),
+                      child: ListTile(
+                        visualDensity:
+                            const VisualDensity(horizontal: 0, vertical: -4),
+                        leading: const CircleAvatar(
+                          backgroundImage: AssetImage('assets/images/img3.png'),
                         ),
-                        textAlign: TextAlign.left,
-                      ),
-                      subtitle: Container(
-                        margin: const EdgeInsets.only(top: 5),
-                        child: const Text(
-                          'Request a pick up now! Our vendor will come to you on the sceduled time to pick up your scrap in exchange for money',
+                        title: const Text(
+                          'Scrap Pickup',
                           style: TextStyle(
-                            fontSize: 12,
+                            color: Colors.green,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
                           ),
                           textAlign: TextAlign.left,
+                        ),
+                        subtitle: Container(
+                          margin: const EdgeInsets.only(top: 5),
+                          child: const Text(
+                            'Request a pick up now! Our vendor will come to you on the sceduled time to pick up your scrap in exchange for money',
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
+                            textAlign: TextAlign.left,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Card(
-                  // color: Colors.grey,
-                  elevation: 5,
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  child: Container(
-                    margin: const EdgeInsets.all(5),
-                    child: ListTile(
-                      visualDensity:
-                          const VisualDensity(horizontal: 0, vertical: -4),
-                      leading: const CircleAvatar(
-                        backgroundImage: AssetImage('assets/images/img3.png'),
-                      ),
-                      title: const Text(
-                        'Scrap Pickup',
-                        style: TextStyle(
-                          color: Colors.green,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
+                  Card(
+                    // color: Colors.grey,
+                    elevation: 5,
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    child: Container(
+                      margin: const EdgeInsets.all(5),
+                      child: ListTile(
+                        visualDensity:
+                            const VisualDensity(horizontal: 0, vertical: -4),
+                        leading: const CircleAvatar(
+                          backgroundImage: AssetImage('assets/images/img3.png'),
                         ),
-                        textAlign: TextAlign.left,
-                      ),
-                      subtitle: Container(
-                        margin: EdgeInsets.only(top: 5),
-                        child: const Text(
-                          'Request a pick up now! Our vendor will come to you on the sceduled time to pick up your scrap in exchange for money',
+                        title: const Text(
+                          'Scrap Pickup',
                           style: TextStyle(
-                            fontSize: 12,
+                            color: Colors.green,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
                           ),
                           textAlign: TextAlign.left,
+                        ),
+                        subtitle: Container(
+                          margin: EdgeInsets.only(top: 5),
+                          child: const Text(
+                            'Request a pick up now! Our vendor will come to you on the sceduled time to pick up your scrap in exchange for money',
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
+                            textAlign: TextAlign.left,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Card(
-                  // color: Colors.grey,
-                  elevation: 5,
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  child: Container(
-                    margin: const EdgeInsets.all(5),
-                    child: ListTile(
-                      visualDensity:
-                          const VisualDensity(horizontal: 0, vertical: -4),
-                      leading: const CircleAvatar(
-                        backgroundImage: AssetImage('assets/images/img3.png'),
-                      ),
-                      title: const Text(
-                        'Scrap Pickup',
-                        style: TextStyle(
-                          color: Colors.green,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
+                  Card(
+                    // color: Colors.grey,
+                    elevation: 5,
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    child: Container(
+                      margin: const EdgeInsets.all(5),
+                      child: ListTile(
+                        visualDensity:
+                            const VisualDensity(horizontal: 0, vertical: -4),
+                        leading: const CircleAvatar(
+                          backgroundImage: AssetImage('assets/images/img3.png'),
                         ),
-                        textAlign: TextAlign.left,
-                      ),
-                      subtitle: Container(
-                        margin: EdgeInsets.only(top: 5),
-                        child: const Text(
-                          'Request a pick up now! Our vendor will come to you on the sceduled time to pick up your scrap in exchange for money',
+                        title: const Text(
+                          'Scrap Pickup',
                           style: TextStyle(
-                            fontSize: 12,
+                            color: Colors.green,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
                           ),
                           textAlign: TextAlign.left,
+                        ),
+                        subtitle: Container(
+                          margin: EdgeInsets.only(top: 5),
+                          child: const Text(
+                            'Request a pick up now! Our vendor will come to you on the sceduled time to pick up your scrap in exchange for money',
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
+                            textAlign: TextAlign.left,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

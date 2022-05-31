@@ -697,56 +697,56 @@ class _SecondRouteState extends State<SecondRoute> {
 
   void imagePickerOption() {
     showModalBottomSheet(
-        context: context,
-        builder: (ctx) => SingleChildScrollView(
-              child: ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(10.0),
-                  topRight: Radius.circular(10.0),
-                ),
-                child: Container(
-                  color: Colors.white,
-                  height: 250,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        const Text(
-                          "Pic Image From",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        ElevatedButton.icon(
-                          onPressed: openCamera,
-                          icon: const Icon(Icons.camera),
-                          label: const Text("CAMERA"),
-                        ),
-                        ElevatedButton.icon(
-                          onPressed: pickImage,
-                          icon: const Icon(Icons.image),
-                          label: const Text("GALLERY"),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        ElevatedButton.icon(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          icon: const Icon(Icons.close),
-                          label: const Text("CANCEL"),
-                        ),
-                      ],
-                    ),
+      context: context,
+      builder: (ctx) => SingleChildScrollView(
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(10.0),
+            topRight: Radius.circular(10.0),
+          ),
+          child: Container(
+            color: Colors.white,
+            height: 250,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const Text(
+                    "Pic Image From",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
                   ),
-                ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: openCamera,
+                    icon: const Icon(Icons.camera),
+                    label: const Text("CAMERA"),
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: pickImage,
+                    icon: const Icon(Icons.image),
+                    label: const Text("GALLERY"),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    icon: const Icon(Icons.close),
+                    label: const Text("CANCEL"),
+                  ),
+                ],
               ),
-            ));
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   pickImage() async {
@@ -816,19 +816,20 @@ class _SecondRouteState extends State<SecondRoute> {
         ));
     Navigator.of(context).pop();
     showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (ctx) => AlertDialog(
-              content: Text(res),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(ctx).pop();
-                    Navigator.of(ctx).pop();
-                  },
-                  child: const Text("Ok"),
-                ),
-              ],
-            ));
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) => AlertDialog(
+        content: Text(res),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(ctx).pop();
+              Navigator.of(ctx).pop();
+            },
+            child: const Text("Ok"),
+          ),
+        ],
+      ),
+    );
   }
 }
